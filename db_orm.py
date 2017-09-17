@@ -28,6 +28,6 @@ class MenuItem(Base):
                                     uselist=True,
                                     cascade='delete,all'))
 
-engine = create_engine('sqlite:///restaurant.db')
-Base.metadata.drop_all(engine)
-Base.metadata.create_all(engine)
+# engine = create_engine('sqlite:///restaurant.db')
+# # Base.metadata.drop_all(engine)
+# Base.metadata.create_all(engine)

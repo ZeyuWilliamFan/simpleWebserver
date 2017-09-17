@@ -10,7 +10,7 @@ from sqlalchemy.orm import relationship, backref, sessionmaker
 
 from sqlalchemy import create_engine
 
-from db_orm import Restaurant, MenuItem
+from db_orm import Base, Restaurant, MenuItem
 
 def InitializeDB():
     data = open("restaurant.json")
@@ -29,9 +29,11 @@ def InitializeDB():
         session.commit()
 
 if __name__ == "__main__" :
-    Base = declarative_base()
     engine = create_engine('sqlite:///restaurant.db')
+    Base.metadata.drop_all(engine)
+    Base.metadata.create_all(engine)
     Base.metadata.bind = engine
+
     DBsession = sessionmaker(bind=engine)
     session = DBsession()
 
